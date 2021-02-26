@@ -1,28 +1,71 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <header><h1>The Guardian</h1></header>
+    <main>
+      <section>
+        <article-list :articles="articles" ></article-list>
+      </section>
+      <aside>
+        <article-detail :article="selectedArticle" :favouriteArticles="favouriteArticles"></article-detail>
+      </aside>
+      <div>
+      <h3>Favourite Articles</h3>
+      <favourite-articles :favouriteArticles="favouriteArticles"></favourite-articles>
+      </div>
+    </main>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import ArticleList from './components/ArticleList.vue';
+import ArticleDetail from './components/ArticleDetail';
+import FavouriteArticles from './components/FavouriteArticles.vue';
+
+import { eventBus } from './main';
 
 export default {
   name: 'App',
+  data(){
+    return {
+      articles: [],
+      selectedArticle: null,
+      favouriteArticles: []
+    };
+  },
   components: {
-    HelloWorld
-  }
+    "article-list": ArticleList,
+    "article-detail": ArticleDetail,
+    "favourite-articles": FavouriteArticles
+  },
+  mounted(){
+    fetch('https://content.guardianapis.com/search?q=brexit&format=json&api-key=test')
+    .then(res => res.json())
+    .then(articles => this.articles = articles.response.results)
+
+    eventBus.$on('article-selected', (article) => {
+      this.selectedArticle = article
+    })
+
+    eventBus.$on('favourite-article', (article) => {
+      this.favouriteArticles.push(article)
+    })
+  },
 }
 </script>
 
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+}
+
+header {
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-size: 35px;
+}
+
+main { 
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 </style>
