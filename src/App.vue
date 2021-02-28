@@ -11,7 +11,10 @@
         </aside>
       </div>   
         <h3>Favourite Articles</h3>
-        <favourite-articles :favouriteArticles="favouriteArticles"></favourite-articles>
+        <favourite-articles :favouriteArticles="favouriteArticles" :selectedFavouriteArticle="selectedFavouriteArticle"></favourite-articles>
+        <section>
+          {{selectedFavouriteArticle}}
+        </section>
     </main>
   </div>
 </template>
@@ -30,7 +33,8 @@ export default {
     return {
       articles: [],
       selectedArticle: null,
-      favouriteArticles: []
+      favouriteArticles: [],
+      selectedFavouriteArticle: null,
     };
   },
   components: {
@@ -55,6 +59,11 @@ export default {
         return article === favouriteArticle
       })
       this.favouriteArticles.splice(index, 1)
+    })
+    eventBus.$on('display-favourite-info', (favouriteArticle) => {
+      // console.log(favouriteArticle.webUrl);
+      this.selectedFavouriteArticle = favouriteArticle.webUrl
+      
     })
   },
 }

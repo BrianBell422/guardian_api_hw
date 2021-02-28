@@ -3,7 +3,7 @@
     <h2>Selected Article Summary</h2>
     <h3>{{article.webTitle}}</h3>
     <section>
-        <p><span>Content</span></p>
+        <p><b>Category: </b>{{article.sectionName}}</p>
     </section> 
     <button v-if="!favouriteArticles.includes(article)" v-on:click="addToFavourites">Add to favourites</button>
   </div>
