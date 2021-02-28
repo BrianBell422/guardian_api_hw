@@ -1,6 +1,6 @@
 <template>
   <div v-if="article" id="articleDetail">
-    <h2>Selected Article</h2>
+    <h2>Selected Article Summary</h2>
     <h3>{{article.webTitle}}</h3>
     <section>
         <p><span>Content</span></p>

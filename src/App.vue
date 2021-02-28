@@ -2,16 +2,16 @@
   <div id="app">
   <header><h1>The Guardian</h1></header>
     <main>
-      <section>
-        <article-list :articles="articles" ></article-list>
-      </section>
-      <aside>
-        <article-detail :article="selectedArticle" :favouriteArticles="favouriteArticles"></article-detail>
-      </aside>
-      <div>
-      <h3>Favourite Articles</h3>
-      <favourite-articles :favouriteArticles="favouriteArticles"></favourite-articles>
-      </div>
+      <div class="articles-summary-container">
+        <section>
+          <article-list :articles="articles" ></article-list>
+        </section>
+        <aside>
+          <article-detail :article="selectedArticle" :favouriteArticles="favouriteArticles"></article-detail>
+        </aside>
+      </div>   
+        <h3>Favourite Articles</h3>
+        <favourite-articles :favouriteArticles="favouriteArticles"></favourite-articles>
     </main>
   </div>
 </template>
@@ -70,7 +70,7 @@ header {
   font-size: 35px;
 }
 
-main { 
+.articles-summary-container { 
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
