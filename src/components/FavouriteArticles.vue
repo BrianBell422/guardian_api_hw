@@ -1,6 +1,6 @@
 <template>
   <ul>
-      <li v-for="favouriteArticle in favouriteArticles">{{favouriteArticle.webTitle}}</li>
+      <li v-for="favouriteArticle in favouriteArticles">{{favouriteArticle.webTitle}} <button v-on:click="removeFromFavourites(favouriteArticle)">Remove from favourites</button></li>
   </ul>
 </template>
 
@@ -8,8 +8,13 @@
 import { eventBus } from '../main.js'
 
 export default {
-    name: 'favourite-articles',
-    props: ['favouriteArticles']
+  name: 'favourite-articles',
+  props: ['favouriteArticles'],
+  methods: {
+    removeFromFavourites: function(favouriteArticle){
+      eventBus.$emit('remove-favourite-article', favouriteArticle)
+    }
+  }  
 }
 </script>
 

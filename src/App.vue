@@ -50,6 +50,12 @@ export default {
     eventBus.$on('favourite-article', (article) => {
       this.favouriteArticles.push(article)
     })
+    eventBus.$on('remove-favourite-article', (favouriteArticle) => {
+      const index = this.favouriteArticles.findIndex((article) => {
+        return article === favouriteArticle
+      })
+      this.favouriteArticles.splice(index, 1)
+    })
   },
 }
 </script>
