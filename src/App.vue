@@ -72,11 +72,16 @@ export default {
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+  background-color: lightgrey;
 }
 
 header {
-  text-align: center;
+  background-image: url(./images/news_header_280.jpg);
+  background-size: cover;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
   font-size: 35px;
+  padding-left: 50px;
 }
 
 .articles-summary-container { 

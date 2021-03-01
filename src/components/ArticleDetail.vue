@@ -5,7 +5,7 @@
     <section>
         <p><b>Category: </b>{{article.sectionName}}</p>
     </section> 
-    <button v-if="!favouriteArticles.includes(article)" v-on:click="addToFavourites">Add to favourites</button>
+    <button class="green-button" v-if="!favouriteArticles.includes(article)" v-on:click="addToFavourites">Add to favourites</button>
   </div>
 </template>
 
