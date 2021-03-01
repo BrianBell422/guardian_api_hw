@@ -4,6 +4,7 @@
       <li class="li-container" v-for="favouriteArticle in favouriteArticles">{{favouriteArticle.webTitle}} 
         <button class="green-button" v-on:click="displayFavouriteInfo(favouriteArticle)">Show full article</button> 
         <button class="red-button" v-on:click="removeFromFavourites(favouriteArticle)">Remove from favourites</button>
+        <a :href="favouriteArticle.webUrl" target="_blank" >Show full article</a>
       </li>
     </ul>
   </section>

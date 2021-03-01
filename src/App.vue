@@ -12,9 +12,6 @@
       </div>   
         <h3>Favourite Articles</h3>
         <favourite-articles :favouriteArticles="favouriteArticles" :selectedFavouriteArticle="selectedFavouriteArticle"></favourite-articles>
-        <section>
-          {{selectedFavouriteArticle}}
-        </section>
     </main>
   </div>
 </template>
